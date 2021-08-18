@@ -95,6 +95,10 @@
                   -->
                   <relocations>
                     <relocation>
+                      <pattern>com.amazon</pattern>
+                      <shadedPattern>shaded.com.amazon</shadedPattern>
+                    </relocation>
+                    <relocation>
                       <pattern>com.google.common</pattern>
                       <shadedPattern>shaded.com.google.common</shadedPattern>
                     </relocation>
