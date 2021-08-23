@@ -36,6 +36,7 @@
     <scala.binary.version>2.11</scala.binary.version>
     <scala.version>2.11.11</scala.version>
     <hadoop.version>2.8.3</hadoop.version>
+    <scalaxml.version>1.3.0</scalaxml.version>
     <phase.prop>package</phase.prop>
   </properties>
   <profiles>
@@ -292,7 +293,7 @@
     <dependency>
       <groupId>com.holdenkarau</groupId>
       <artifactId>spark-testing-base_${scala.binary.version}</artifactId>
-      <version>${spark.version}_0.14.0</version>
+      <version>${spark.version}_1.1.0</version>
       <exclusions>
         <exclusion>
           <groupId>org.apache.hadoop</groupId>
@@ -378,6 +379,10 @@
           <groupId>commons-pool</groupId>
           <artifactId>commons-pool</artifactId>
         </exclusion>
+        <exclusion>
+          <groupId>org.eclipse.jetty</groupId>
+          <artifactId>jetty-util</artifactId>
+        </exclusion>
       </exclusions>
       <scope>test</scope>
     </dependency>
@@ -426,7 +431,7 @@
     <dependency>
       <groupId>org.scala-lang.modules</groupId>
       <artifactId>scala-xml_${scala.binary.version}</artifactId>
-      <version>1.0.6</version>
+      <version>${scalaxml.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -461,6 +466,10 @@
         <exclusion>
           <groupId>org.apache.orc</groupId>
           <artifactId>orc-core</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.scala-lang.modules</groupId>
+          <artifactId>scala-xml_${scala.binary.version}</artifactId>
         </exclusion>
       </exclusions>
       <scope>test</scope>
