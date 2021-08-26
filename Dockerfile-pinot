@@ -11,16 +11,16 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 COPY pinot-distribution/target/apache-pinot-${PINOT_VERSION}-bin/apache-pinot-${PINOT_VERSION}-bin ${PINOT_HOME}
-COPY pinot-plugins/pinot-batch-ingestion/pinot-batch-ingestion-spark/target/pinot-batch-ingestion-spark-${PINOT_VERSION}-shaded.jar ${PINOT_HOME}/lib/
-COPY pinot-plugins/pinot-file-system/pinot-s3/target/pinot-s3-${PINOT_VERSION}-shaded.jar ${PINOT_HOME}/lib/
-COPY pinot-plugins/pinot-input-format/pinot-parquet/target/pinot-parquet-${PINOT_VERSION}-shaded.jar ${PINOT_HOME}/lib/
 
-WORKDIR ${PINOT_HOME}
+COPY docker/images/pinot/bin ${PINOT_HOME}/bin
+COPY docker/images/pinot/etc ${PINOT_HOME}/etc
+COPY docker/images/pinot/examples ${PINOT_HOME}/examples
 
 RUN mkdir -p ${PINOT_HOME}/configs && \
     mkdir -p ${PINOT_HOME}/data && \
     chmod +x ${PINOT_HOME}/bin/*.sh
 
+WORKDIR ${PINOT_HOME}
 ENTRYPOINT ["./bin/pinot-admin.sh"]
 
 CMD ["run"]
